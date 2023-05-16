@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+:root {
+  height: 100%;
+}
+
+.customScrollbar::-webkit-scrollbar {
+  height: 9px;
+  background-color: inherit;
+}
+.customScrollbar::-webkit-scrollbar-thumb {
+  background-color: hsla(0, 0%, 69%, 0.393);
+  border-radius: 10px;
+  transition: 0.3s all ease;
+}
+.customScrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: hsla(0, 0%, 69%, 0.693);
+}
+@media screen and (max-width: 717px) {
+  .customScrollbar::-webkit-scrollbar {
+    max-height: 4px;
+  }
+}
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top {
+  z-index: 0 !important;
+}
+
+.rdrMonth {
+  width: 100% !important;
+}
+
+.rdrCalenderWrapper {
+  width: 100% !important;
+  font-size: 16px !important;
+}
