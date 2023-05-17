@@ -1,6 +1,6 @@
 ## AIRBNB CLONE ##
 
-This is a mini [Airbnb clone](), with full functionalities like:
+This is a mini [Airbnb clone](https://), with full functionalities like:
     - Listing properties
     - Managing properties
     - Creating Reservations
