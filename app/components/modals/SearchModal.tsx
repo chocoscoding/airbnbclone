@@ -8,7 +8,7 @@ import { formatISO } from 'date-fns';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import useSearchModal from "@/app/hooks/useSearchModal";
-
+import Button from '../Button';
 import Modal from "./Modal";
 import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
@@ -117,6 +117,21 @@ const SearchModal = () => {
     return 'Back'
   }, [step]);
 
+  const resetSearch = ()=>{
+     setStep(STEPS.LOCATION);
+
+     setLocation(undefined);
+     setGuestCount(1);
+     setRoomCount(1);
+     setBathroomCount(1);
+     setDateRange({
+      startDate: new Date(),
+      endDate: new Date(),
+      key: 'selection'
+    });
+    router.push(`/`);
+  }
+
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
@@ -180,6 +195,16 @@ const SearchModal = () => {
       </div>
     )
   }
+  const footerContent = (
+    <div className='flex flex-col gap-4 mt-3'>
+      <hr />
+      <Button
+        outline
+        label='Reset search filters'
+        onClick={resetSearch}
+      />
+    </div>
+  );
 
   return (
     <Modal
@@ -191,6 +216,7 @@ const SearchModal = () => {
       secondaryAction={step === STEPS.LOCATION ? undefined : onBack}
       onClose={searchModal.onClose}
       body={bodyContent}
+      footer={footerContent}
     />
   );
 }

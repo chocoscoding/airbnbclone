@@ -35,19 +35,6 @@ const RegisterModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
-    // axios.post('/api/register', data)
-    // .then(() => {
-    //   toast.success('Registered!');
-    //   registerModal.onClose();
-    //   loginModal.onOpen();
-    // })
-    // .catch((error) => {
-    //   toast.error(error);
-    // })
-    // .finally(() => {
-    //   setIsLoading(false);
-    // })
-
     try {
       const response: any = await axios.post("/api/register", data);
 
