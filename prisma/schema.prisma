@@ -20,7 +20,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   favouriteIds String[] @db.ObjectId
-
+  username String?
   accounts Account[]
   listings Listing[]
   reservations Reservation[]
