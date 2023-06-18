@@ -20,7 +20,6 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   favouriteIds String[] @db.ObjectId
-  username String?
   accounts Account[]
   listings Listing[]
   reservations Reservation[]
@@ -39,6 +38,7 @@ model Account{
   scope String?
   id_token String? @db.String
   session_state String?
+  username String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
