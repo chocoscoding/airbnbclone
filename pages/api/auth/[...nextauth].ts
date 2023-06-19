@@ -27,7 +27,7 @@ export const authOptions: AuthOptions = {
           id: profile.sub,
           name: profile.name,
           email: profile.email,
-          emailVerified: profile.email_verified,
+          emailVerified2: profile.email_verified,
           image: profile.picture,
           firstname: profile.given_name,
           lastName: profile.family_name,
