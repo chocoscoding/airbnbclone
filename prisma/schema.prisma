@@ -23,6 +23,8 @@ model User {
   accounts Account[]
   listings Listing[]
   reservations Reservation[]
+  username String?
+  firstname String?
 }
 
 model Account{
@@ -38,7 +40,6 @@ model Account{
   scope String?
   id_token String? @db.String
   session_state String?
-  username String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
