@@ -23,8 +23,8 @@ model User {
   accounts Account[]
   listings Listing[]
   reservations Reservation[]
-  username String?
   firstname String?
+  username String?
 }
 
 model Account{
