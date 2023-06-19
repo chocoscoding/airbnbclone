@@ -15,14 +15,23 @@ export const authOptions: AuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code"
+        }
+      },
       profile(profile) {
         return {
-          id: profile.id,
+          id: profile.sub,
           name: profile.name,
           email: profile.email,
+          emailVerified: profile.email_verified,
           image: profile.picture,
-          firstName: profile.given_name,
+          firstname: profile.given_name,
           lastName: profile.family_name,
+          username: (profile.name).replace(/\s+/g, ''),
         };
       },
     }),
