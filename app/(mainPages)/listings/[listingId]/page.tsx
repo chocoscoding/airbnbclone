@@ -6,29 +6,28 @@ import ListingClient from "./ListingClient";
 import getReservations from "@/app/actions/getReservations";
 
 interface IParams {
-    listingId?: string
+  listingId?: string;
 }
-const ListingPage = async({params}: {params: IParams}) => {
-    const currentUser = await getCurrentUser();
-    const listing = await getListingById(params);
-    const reservation = await getReservations(params);
-if(!listing) {
+const ListingPage = async ({ params }: { params: IParams }) => {
+  const currentUser = await getCurrentUser();
+  const listing = await getListingById(params);
+  const reservation = await getReservations(params);
+  if (!listing) {
     return (
-        <ClientOnly>
-            <EmptyState/>
-        </ClientOnly>
-    )
-}    
+      <ClientOnly>
+        <EmptyState />
+      </ClientOnly>
+    );
+  }
   return (
-  <ClientOnly>
-    <ListingClient
-    reservations={reservation}
-    listing={listing}
-    currentUser={currentUser}
-    />
-  </ClientOnly>
-  )
-  ;
+    <ClientOnly>
+      <ListingClient
+        reservations={reservation}
+        listing={listing}
+        currentUser={currentUser}
+      />
+    </ClientOnly>
+  );
 };
 
 export default ListingPage;
