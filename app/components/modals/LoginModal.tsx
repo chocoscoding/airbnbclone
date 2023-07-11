@@ -35,13 +35,13 @@ const LoginModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-
+    const loadingToast = toast.loading("Logging In");
     signIn("credentials", {
       ...data,
       redirect: false,
     }).then((callback) => {
-      setIsLoading(false);
-
+      toast.dismiss(loadingToast);
+      setIsLoading(false)
       if (callback?.ok) {
         toast.success("Logged in");
         router.refresh();

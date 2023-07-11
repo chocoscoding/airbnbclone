@@ -35,14 +35,16 @@ const RegisterModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
+    const loadingToast = toast.loading("Registering");
     try {
       const response: any = await axios.post("/api/register", data);
-
-      if(response.status === 404 )
+      toast.dismiss(loadingToast);
+      if (response.status === 404) throw new Error(response.error);
       toast.success("Registered!");
       registerModal.onClose();
       loginModal.onOpen();
     } catch (error: any) {
+      toast.dismiss(loadingToast);
       console.log(error);
       toast.error(error);
     } finally {
@@ -62,16 +64,16 @@ const RegisterModal = () => {
         subtitle='Create an account!'
       />
       <Input
-        id='email'
-        label='Email'
+        id='name'
+        label='Name'
         disabled={isLoading}
         register={register}
         errors={errors}
         required
       />
       <Input
-        id='name'
-        label='Name'
+        id='email'
+        label='Email'
         disabled={isLoading}
         register={register}
         errors={errors}
