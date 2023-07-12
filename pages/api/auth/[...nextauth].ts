@@ -15,18 +15,6 @@ export const authOptions: AuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-      profile(profile) {
-        return {
-          id: profile.sub,
-          name: profile.name,
-          email: profile.email,
-          emailVerified2: profile.email_verified,
-          image: profile.picture,
-          firstname: profile.given_name,
-          lastName: profile.family_name,
-          username: profile.name.replace(/\s+/g, ""),
-        };
-      },
     }),
     CredentialsProvider({
       name: "credentials",

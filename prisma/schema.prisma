@@ -15,7 +15,6 @@ model User {
   email String? @unique
   name String?
   emailVerified DateTime?
-  emailVerified2 Boolean? @default(false)
   image String?
   hashedPassword String?
   createdAt DateTime @default(now())
@@ -24,9 +23,6 @@ model User {
   accounts Account[]
   listings Listing[]
   reservations Reservation[]
-  firstname String?
-  lastName String?
-  username String?
 }
 
 model Account{
@@ -42,6 +38,7 @@ model Account{
   scope String?
   id_token String? @db.String
   session_state String?
+  username String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
